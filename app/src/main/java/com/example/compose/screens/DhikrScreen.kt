@@ -1,5 +1,6 @@
 package com.example.compose.screens
 
+import android.content.Context
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
@@ -14,17 +15,21 @@ import androidx.compose.material.icons.filled.SingleBed
 import androidx.compose.material.icons.filled.Wash
 import androidx.compose.material.icons.filled.WbSunny
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import com.example.compose.UserPreferences
 import com.example.compose.composables.DhikrTitleCard
+import kotlinx.coroutines.launch
 
 @Composable
 fun DhikrScreen(
-    onNavigateToBreathing: () -> Unit = {},
-    onNavigateToDailyTips: () -> Unit = {},
-    onNavigateToGratitudePractice: () -> Unit = {},
-    onNavigateToJournaling: () -> Unit = {}
+    context: Context,
+    navController: NavController
 ) {
+    val scope = rememberCoroutineScope()
+
     LazyColumn(
         modifier = Modifier
             .padding(16.dp)
@@ -34,8 +39,12 @@ fun DhikrScreen(
             DhikrTitleCard(
                 title = "Morning Dhikr",
                 icon = Icons.Default.WbSunny,
-                onClick = onNavigateToBreathing
-            )
+                onClick = {
+                    scope.launch {
+                        UserPreferences.saveDhikrType(context, "morning")
+                        navController.navigate("Adhkar")
+                    }
+                })
             Spacer(Modifier.height(16.dp))
         }
 
@@ -43,8 +52,12 @@ fun DhikrScreen(
             DhikrTitleCard(
                 title = "Night Dhikr",
                 icon = Icons.Default.Nightlight,
-                onClick = onNavigateToDailyTips
-            )
+                onClick = {
+                    scope.launch {
+                        UserPreferences.saveDhikrType(context, "night")
+                        navController.navigate("Adhkar")
+                    }
+                })
             Spacer(Modifier.height(16.dp))
         }
 
@@ -52,8 +65,12 @@ fun DhikrScreen(
             DhikrTitleCard(
                 title = "Wake up Dhikr",
                 icon = Icons.Default.WbSunny,
-                onClick = onNavigateToGratitudePractice
-            )
+                onClick = {
+                    scope.launch {
+                        UserPreferences.saveDhikrType(context, "wake")
+                        navController.navigate("Adhkar")
+                    }
+                })
             Spacer(Modifier.height(16.dp))
         }
 
@@ -61,8 +78,12 @@ fun DhikrScreen(
             DhikrTitleCard(
                 title = "Sleep Dhikr",
                 icon = Icons.Default.SingleBed,
-                onClick = onNavigateToJournaling
-            )
+                onClick = {
+                    scope.launch {
+                        UserPreferences.saveDhikrType(context, "Sleep")
+                        navController.navigate("Adhkar")
+                    }
+                })
             Spacer(Modifier.height(16.dp))
         }
 
@@ -70,8 +91,12 @@ fun DhikrScreen(
             DhikrTitleCard(
                 title = "Mosque Dhikr",
                 icon = Icons.Default.Mosque,
-                onClick = onNavigateToJournaling
-            )
+                onClick = {
+                    scope.launch {
+                        UserPreferences.saveDhikrType(context, "Mosque")
+                        navController.navigate("Adhkar")
+                    }
+                })
             Spacer(Modifier.height(16.dp))
         }
 
@@ -79,8 +104,12 @@ fun DhikrScreen(
             DhikrTitleCard(
                 title = "After Salat Dhikr",
                 icon = Icons.Default.Mosque,
-                onClick = onNavigateToJournaling
-            )
+                onClick = {
+                    scope.launch {
+                        UserPreferences.saveDhikrType(context, "Salat")
+                        navController.navigate("Adhkar")
+                    }
+                })
             Spacer(Modifier.height(16.dp))
         }
 
@@ -88,8 +117,13 @@ fun DhikrScreen(
             DhikrTitleCard(
                 title = "Ablution Dhikr",
                 icon = Icons.Default.Wash,
-                onClick = onNavigateToJournaling
-            )
+                onClick = {
+                    scope.launch {
+                        UserPreferences.saveDhikrType(context, "Ablution")
+                        navController.navigate("Adhkar")
+
+                    }
+                })
             Spacer(Modifier.height(16.dp))
         }
 
@@ -97,8 +131,12 @@ fun DhikrScreen(
             DhikrTitleCard(
                 title = "Bathroom Dhikr",
                 icon = Icons.Default.Bathroom,
-                onClick = onNavigateToJournaling
-            )
+                onClick = {
+                    scope.launch {
+                        UserPreferences.saveDhikrType(context, "bathroom")
+                        navController.navigate("Adhkar")
+                    }
+                })
             Spacer(Modifier.height(16.dp))
         }
 
@@ -106,8 +144,12 @@ fun DhikrScreen(
             DhikrTitleCard(
                 title = "House Dhikr",
                 icon = Icons.Default.House,
-                onClick = onNavigateToJournaling
-            )
+                onClick = {
+                    scope.launch {
+                        UserPreferences.saveDhikrType(context, "house")
+                        navController.navigate("Adhkar")
+                    }
+                })
         }
     }
 }

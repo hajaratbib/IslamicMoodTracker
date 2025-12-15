@@ -13,6 +13,7 @@ object UserPreferences {
     val Context.dataStore by preferencesDataStore(name = "user_prefs")
     private val NAME_KEY = stringPreferencesKey("username")
     private val ONBOARDING_KEY = booleanPreferencesKey("onboarding_completed")
+    private val DHIKR_TYPE_KEY = stringPreferencesKey("dhikr_type")
 
     suspend fun saveName(context: Context, name: String) {
         context.dataStore.edit { prefs ->
@@ -29,4 +30,13 @@ object UserPreferences {
 
     fun isOnboardingCompleted(context: Context): Flow<Boolean> =
         context.dataStore.data.map { it[ONBOARDING_KEY] ?: false }
+
+    suspend fun saveDhikrType(context: Context, dhikrType: String) {
+        context.dataStore.edit { prefs ->
+            prefs[DHIKR_TYPE_KEY] = dhikrType
+        }
+    }
+
+    fun getDhikrType(context: Context): Flow<String?> =
+        context.dataStore.data.map { it[DHIKR_TYPE_KEY] ?: ""}
 }

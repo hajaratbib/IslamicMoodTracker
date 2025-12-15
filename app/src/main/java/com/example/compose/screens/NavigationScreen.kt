@@ -37,13 +37,20 @@ fun NavigationScreen(context: Context) {
         ) {
             composable("start") { StartScreen(context = context) }
 
-            composable(BottomNavItem.Home.route) { HomeScreen(context, nameFlow.value?:"") }
+            composable(BottomNavItem.Home.route) { HomeScreen(context, nameFlow.value ?: "") }
 
             composable(BottomNavItem.Tips.route) { TipsScreen() }
 
-            composable(BottomNavItem.Dhikr.route) { DhikrScreen() }
+            composable(BottomNavItem.Dhikr.route) {
+                DhikrScreen(
+                    context = context,
+                    navController = navController
+                )
+            }
 
             composable(BottomNavItem.Profile.route) { ProfileScreen() }
+
+            composable("Adhkar") { AdhkarScreen(context) }
 
             composable("settings") { SettingsScreen() }
         }

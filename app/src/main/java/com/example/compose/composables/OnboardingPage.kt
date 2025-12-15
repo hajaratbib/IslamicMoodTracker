@@ -20,7 +20,7 @@ val onboardingPages = listOf(
         animationRes = R.drawable.breathing
     ),
     OnboardingPage(
-        title = "Find Inner Peace \uD83D\uDC8E",
+        title = "Find Inner Peace \uD83D\uDCFF",
         description = "Get daily dhikr and reminders for spiritual calm.",
         animationRes = R.drawable.dhikr_beads
     )
