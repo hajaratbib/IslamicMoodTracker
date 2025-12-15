@@ -12,16 +12,16 @@ val onboardingPages = listOf(
     OnboardingPage(
         title = "Welcome to Sukoon 🌿",
         description = "Track your mood and discover emotional clarity.",
-        animationRes = R.raw.welcome_leaf
+        animationRes = R.drawable.sukoon
     ),
     OnboardingPage(
-        title = "Breathe & Relax",
+        title = "Breathe & Relax \uD83D\uDD4A\uFE0F",
         description = "Guided breathing exercises to reduce anxiety and stress.",
-        animationRes = R.raw.breathing_ring
+        animationRes = R.drawable.breathing
     ),
     OnboardingPage(
-        title = "Find Inner Peace",
+        title = "Find Inner Peace \uD83D\uDC8E",
         description = "Get daily dhikr and reminders for spiritual calm.",
-        animationRes = R.raw.dhikr_beads
+        animationRes = R.drawable.dhikr_beads
     )
 )

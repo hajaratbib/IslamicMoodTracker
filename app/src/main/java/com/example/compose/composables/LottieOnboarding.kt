@@ -1,5 +1,7 @@
 package com.example.compose.composables
 
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -14,24 +16,18 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.airbnb.lottie.compose.LottieAnimation
-import com.airbnb.lottie.compose.LottieCompositionSpec
-import com.airbnb.lottie.compose.LottieConstants
-import com.airbnb.lottie.compose.animateLottieCompositionAsState
-import com.airbnb.lottie.compose.rememberLottieComposition
-import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.HorizontalPagerIndicator
 import com.google.accompanist.pager.rememberPagerState
 import kotlinx.coroutines.launch
 
-@OptIn(ExperimentalPagerApi::class)
 @Composable
 fun LottieOnboarding(
     onFinish: () -> Unit
@@ -42,6 +38,7 @@ fun LottieOnboarding(
     Column(
         modifier = Modifier
             .fillMaxSize()
+            .background(Color.White)
             .padding(24.dp),
         verticalArrangement = Arrangement.SpaceBetween
     ) {
@@ -60,18 +57,10 @@ fun LottieOnboarding(
                 verticalArrangement = Arrangement.Center
             ) {
 
-                // Lottie Animation
-                val composition by rememberLottieComposition(LottieCompositionSpec.RawRes(item.animationRes))
-
-                val progress by animateLottieCompositionAsState(
-                    composition = composition,
-                    iterations = LottieConstants.IterateForever
-                )
-
-                LottieAnimation(
-                    composition = composition,
-                    progress = { progress }, // NEW recommended way
-                    modifier = Modifier.size(200.dp)
+                Image(
+                    painter = painterResource(item.animationRes),
+                    contentDescription = "Breathing Ring",
+                    modifier = Modifier.size(400.dp)
                 )
 
 
@@ -104,7 +93,7 @@ fun LottieOnboarding(
 
         // Navigation buttons
         Row(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier.fillMaxWidth().padding(bottom = 20.dp),
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             TextButton(onClick = onFinish) {

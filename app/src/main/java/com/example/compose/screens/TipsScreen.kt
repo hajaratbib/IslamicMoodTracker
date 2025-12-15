@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Lightbulb
 import androidx.compose.material.icons.filled.Spa
@@ -18,7 +19,8 @@ import com.example.compose.composables.FeatureCard
 fun TipsScreen(
     onNavigateToBreathing: () -> Unit = {},
     onNavigateToDailyTips: () -> Unit = {},
-    onNavigateToDhikr: () -> Unit = {}
+    onNavigateToGratitudePractice: () -> Unit = {},
+    onNavigateToJournaling: () -> Unit = {}
 ) {
 
     Column(
@@ -36,8 +38,8 @@ fun TipsScreen(
         Spacer(Modifier.height(16.dp))
 
         FeatureCard(
-            title = "Daily Wellbeing Tips",
-            description = "Personalized advice for your mood",
+            title = "Daily Wellbeing habits",
+            description = "Practices for a better life style",
             icon = Icons.Default.Lightbulb,
             onClick = onNavigateToDailyTips
         )
@@ -45,10 +47,19 @@ fun TipsScreen(
         Spacer(Modifier.height(16.dp))
 
         FeatureCard(
-            title = "Dhikr & Spiritual Calm",
-            description = "Authentic adhkar for peace",
+            title = "Gratitude Practice",
+            description = "Shift focus on the blessings",
             icon = Icons.Default.Spa,
-            onClick = onNavigateToDhikr
+            onClick = onNavigateToGratitudePractice
+        )
+
+        Spacer(Modifier.height(16.dp))
+
+        FeatureCard(
+            title = "Journaling",
+            description = "Process emotions by writing thoughts",
+            icon = Icons.Default.Edit,
+            onClick = onNavigateToJournaling
         )
     }
 

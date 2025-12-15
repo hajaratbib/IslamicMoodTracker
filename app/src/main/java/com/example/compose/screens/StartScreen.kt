@@ -25,7 +25,7 @@ fun StartScreen(context: Context) {
 
         else -> {
             // Name exists → show the actual home screen
-            HomeScreen(username = username)
+            HomeScreen(context = context, username = username)
         }
     }
 }

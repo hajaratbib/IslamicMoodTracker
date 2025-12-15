@@ -4,11 +4,13 @@ import android.content.Context
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.compose.BottomNavItem
+import com.example.compose.UserPreferences
 import com.example.compose.composables.BottomNavigationBar
 import com.example.compose.composables.HomeTopBar
 
@@ -17,6 +19,7 @@ fun NavigationScreen(context: Context) {
 
 
     val navController = rememberNavController()
+    val nameFlow = UserPreferences.getName(context).collectAsState(initial = null)
 
     Scaffold(
         topBar = {
@@ -34,15 +37,15 @@ fun NavigationScreen(context: Context) {
         ) {
             composable("start") { StartScreen(context = context) }
 
-            composable(BottomNavItem.Home.route) { HomeScreen() }
+            composable(BottomNavItem.Home.route) { HomeScreen(context, nameFlow.value?:"") }
 
             composable(BottomNavItem.Tips.route) { TipsScreen() }
 
-            composable(BottomNavItem.Dhikr.route) { HomeScreen() }
+            composable(BottomNavItem.Dhikr.route) { DhikrScreen() }
 
-            composable(BottomNavItem.Profile.route) { HomeScreen() }
+            composable(BottomNavItem.Profile.route) { ProfileScreen() }
 
-            composable("settings") { HomeScreen() }
+            composable("settings") { SettingsScreen() }
         }
     }
 }
