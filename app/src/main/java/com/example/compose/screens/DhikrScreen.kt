@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Bathroom
 import androidx.compose.material.icons.filled.House
@@ -19,6 +20,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.compose.DhikrType
 import com.example.compose.UserPreferences
 import com.example.compose.composables.DhikrTitleCard
 import kotlinx.coroutines.launch
@@ -28,6 +30,17 @@ fun DhikrScreen(
     context: Context,
     navController: NavController
 ) {
+    val items = listOf(
+        DhikrType("Morning Dhikr", Icons.Default.WbSunny, "morning"),
+        DhikrType("Night Dhikr", Icons.Default.Nightlight, "night"),
+        DhikrType("Wake up Dhikr", Icons.Default.WbSunny, "wake"),
+        DhikrType("Sleep Dhikr", Icons.Default.SingleBed, "sleep"),
+        DhikrType("Mosque Dhikr", Icons.Default.Mosque, "mosque"),
+        DhikrType("After Salat Dhikr", Icons.Default.Mosque, "salat"),
+        DhikrType("Ablution Dhikr", Icons.Default.Wash, "ablution"),
+        DhikrType("Bathroom Dhikr", Icons.Default.Bathroom, "bathroom"),
+        DhikrType("House Dhikr", Icons.Default.House, "house"),
+    )
     val scope = rememberCoroutineScope()
 
     LazyColumn(
@@ -35,121 +48,18 @@ fun DhikrScreen(
             .padding(16.dp)
             .fillMaxSize()
     ) {
-        item {
+        items(items) { item ->
             DhikrTitleCard(
-                title = "Morning Dhikr",
-                icon = Icons.Default.WbSunny,
+                title = item.title,
+                icon = item.icon,
                 onClick = {
                     scope.launch {
-                        UserPreferences.saveDhikrType(context, "morning")
+                        UserPreferences.saveDhikrType(context, item.type)
                         navController.navigate("Adhkar")
                     }
-                })
+                }
+            )
             Spacer(Modifier.height(16.dp))
-        }
-
-        item {
-            DhikrTitleCard(
-                title = "Night Dhikr",
-                icon = Icons.Default.Nightlight,
-                onClick = {
-                    scope.launch {
-                        UserPreferences.saveDhikrType(context, "night")
-                        navController.navigate("Adhkar")
-                    }
-                })
-            Spacer(Modifier.height(16.dp))
-        }
-
-        item {
-            DhikrTitleCard(
-                title = "Wake up Dhikr",
-                icon = Icons.Default.WbSunny,
-                onClick = {
-                    scope.launch {
-                        UserPreferences.saveDhikrType(context, "wake")
-                        navController.navigate("Adhkar")
-                    }
-                })
-            Spacer(Modifier.height(16.dp))
-        }
-
-        item {
-            DhikrTitleCard(
-                title = "Sleep Dhikr",
-                icon = Icons.Default.SingleBed,
-                onClick = {
-                    scope.launch {
-                        UserPreferences.saveDhikrType(context, "Sleep")
-                        navController.navigate("Adhkar")
-                    }
-                })
-            Spacer(Modifier.height(16.dp))
-        }
-
-        item {
-            DhikrTitleCard(
-                title = "Mosque Dhikr",
-                icon = Icons.Default.Mosque,
-                onClick = {
-                    scope.launch {
-                        UserPreferences.saveDhikrType(context, "Mosque")
-                        navController.navigate("Adhkar")
-                    }
-                })
-            Spacer(Modifier.height(16.dp))
-        }
-
-        item {
-            DhikrTitleCard(
-                title = "After Salat Dhikr",
-                icon = Icons.Default.Mosque,
-                onClick = {
-                    scope.launch {
-                        UserPreferences.saveDhikrType(context, "Salat")
-                        navController.navigate("Adhkar")
-                    }
-                })
-            Spacer(Modifier.height(16.dp))
-        }
-
-        item {
-            DhikrTitleCard(
-                title = "Ablution Dhikr",
-                icon = Icons.Default.Wash,
-                onClick = {
-                    scope.launch {
-                        UserPreferences.saveDhikrType(context, "Ablution")
-                        navController.navigate("Adhkar")
-
-                    }
-                })
-            Spacer(Modifier.height(16.dp))
-        }
-
-        item {
-            DhikrTitleCard(
-                title = "Bathroom Dhikr",
-                icon = Icons.Default.Bathroom,
-                onClick = {
-                    scope.launch {
-                        UserPreferences.saveDhikrType(context, "bathroom")
-                        navController.navigate("Adhkar")
-                    }
-                })
-            Spacer(Modifier.height(16.dp))
-        }
-
-        item {
-            DhikrTitleCard(
-                title = "House Dhikr",
-                icon = Icons.Default.House,
-                onClick = {
-                    scope.launch {
-                        UserPreferences.saveDhikrType(context, "house")
-                        navController.navigate("Adhkar")
-                    }
-                })
         }
     }
 }
