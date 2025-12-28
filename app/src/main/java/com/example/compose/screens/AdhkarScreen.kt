@@ -37,8 +37,10 @@ fun AdhkarScreen(context: Context) {
                         Adhkar.filter { it.type == type }.mapIndexed { index, dhikr ->
                             DhikrUi(
                                 id = index,
+                                title = dhikr.title,
                                 text = dhikr.text,
-                                remaining = dhikr.initialCount
+                                remaining = dhikr.initialCount,
+                                desc = dhikr.desc
                             )
                         }
                     )
@@ -57,6 +59,8 @@ fun AdhkarScreen(context: Context) {
 
                     DhikrItem(
                         text = dhikr.text,
+                        title = dhikr.title,
+                        desc = dhikr.desc,
                         remaining = dhikr.remaining,
                         onClick = {
                             val index = adhkar.indexOfFirst { it.id == dhikr.id }
