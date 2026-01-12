@@ -12,7 +12,9 @@ import androidx.compose.material.icons.filled.Lightbulb
 import androidx.compose.material.icons.filled.Spa
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.unit.dp
+import com.example.compose.R
 import com.example.compose.composables.FeatureCard
 
 @Composable
@@ -29,36 +31,40 @@ fun TipsScreen(
             .fillMaxSize()
     ) {
         FeatureCard(
-            title = "Breathing Exercise",
-            description = "Relax with guided breathing",
+            title = R.string.breathing_title,
+            description = R.string.breathing_desc,
             icon = Icons.Default.Favorite,
+            colorResource(R.color.light_red),
             onClick = onNavigateToBreathing
         )
 
         Spacer(Modifier.height(16.dp))
 
         FeatureCard(
-            title = "Daily Wellbeing habits",
-            description = "Practices for a better life style",
+            title = R.string.wellbeing_title,
+            description = R.string.wellbeing_desc,
             icon = Icons.Default.Lightbulb,
+            colorResource(R.color.yellow),
             onClick = onNavigateToDailyTips
         )
 
         Spacer(Modifier.height(16.dp))
 
         FeatureCard(
-            title = "Gratitude Practice",
-            description = "Shift focus on the blessings",
+            title = R.string.gratitude_title,
+            description = R.string.gratitude_desc,
             icon = Icons.Default.Spa,
+            colorResource(R.color.light_green),
             onClick = onNavigateToGratitudePractice
         )
 
         Spacer(Modifier.height(16.dp))
 
         FeatureCard(
-            title = "Journaling",
-            description = "Process emotions by writing thoughts",
+            title = R.string.journaling_title,
+            description = R.string.journaling_desc,
             icon = Icons.Default.Edit,
+            colorResource(R.color.dark_gray),
             onClick = onNavigateToJournaling
         )
     }

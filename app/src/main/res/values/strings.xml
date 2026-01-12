@@ -1,3 +1,72 @@
 <resources>
     <string name="app_name">Sukoon</string>
+    <string name="home">Home</string>
+    <string name="tips">Tips</string>
+    <string name="dhikr">Dhikr</string>
+    <string name="profile">Profile</string>
+    <string name="welcome_name">Welcome! What is your name?</string>
+    <string name="enter_name">Welcome! What is your name?</string>
+    <string name="save">Save</string>
+    <string name="morning_dhikr">Morning Dhikr</string>
+    <string name="night_dhikr">Night Dhikr</string>
+    <string name="wake_up_dhikr">Wake up Dhikr</string>
+    <string name="sleep_dhikr">Sleep Dhikr</string>
+    <string name="mosque_dhikr">Mosque Dhikr</string>
+    <string name="after_salat_dhikr">After Salat Dhikr</string>
+    <string name="ablution_dhikr">Ablution Dhikr</string>
+    <string name="bathroom_dhikr">Bathroom Dhikr</string>
+    <string name="house_dhikr">House Dhikr</string>
+    <string name="happy">Happy</string>
+    <string name="calm">Calm</string>
+    <string name="sad">Sad</string>
+    <string name="anxious">Anxious</string>
+    <string name="angry">Angry</string>
+    <string name="tired">Tired</string>
+    <string name="stressed">Stressed</string>
+    <string name="lonely">Lonely</string>
+    <string name="guilty">Guilty</string>
+    <string name="confused">Confused</string>
+    <string name="hopeful">Hopeful</string>
+    <string name="fearful">Fearful</string>
+    <string name="grateful">Grateful</string>
+    <string name="excited">Excited</string>
+    <string name="overwhelmed">Overwhelmed</string>
+    <string name="peaceful">Peaceful</string>
+    <string name="motivated">Motivated</string>
+    <string name="regretful">Regretful</string>
+    <string name="frustrated">Frustrated</string>
+    <string name="overjoyed">Overjoyed</string>
+    <string name="insecure">Insecure</string>
+    <string name="nostalgic">Nostalgic</string>
+    <string name="confident">Confident</string>
+    <string name="embarrassed">Embarrassed</string>
+    <string name="relaxed">Relaxed</string>
+    <string name="curious">Curious</string>
+    <string name="jealous">Jealous</string>
+    <string name="recommended">Recommended Dhikr for </string>
+    <string name="back_list">Back to Mood List</string>
+    <string name="finish">Finish</string>
+    <string name="next">Next</string>
+    <string name="skip">Skip</string>
+    <string name="Onboarding_title1">Welcome to Sukoon</string>
+    <string name="Onboarding_title2">Breathe &amp; Relax</string>
+    <string name="Onboarding_title3">Find Inner Peace</string>
+    <string name="Onboarding_message1">Track your mood and discover emotional clarity</string>
+    <string name="Onboarding_message2">Guided breathing exercises to reduce anxiety and stress</string>
+    <string name="Onboarding_message3">Get daily dhikr and reminders for spiritual calm</string>
+    <string name="hello">Hello, </string>
+    <string name="mood_question">How are you feeling today?</string>
+    <string name="breathing_title">Breathing Exercise</string>
+    <string name="breathing_desc">Relax with guided breathing</string>
+    <string name="wellbeing_title">Daily Wellbeing habits</string>
+    <string name="wellbeing_desc">Practices for a better life style</string>
+    <string name="gratitude_title">Daily Wellbeing habits</string>
+    <string name="gratitude_desc">Practices for a better life style</string>
+    <string name="journaling_title">Daily Wellbeing habits</string>
+    <string name="journaling_desc">Practices for a better life style</string>
+
+
+
+
+
 </resources>

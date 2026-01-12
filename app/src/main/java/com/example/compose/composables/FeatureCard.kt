@@ -18,14 +18,17 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 
 @Composable
 fun FeatureCard(
-    title: String,
-    description: String,
+    title: Int,
+    description: Int,
     icon: ImageVector,
+    iconColor: Color,
     onClick: () -> Unit
 ) {
     Card(
@@ -43,10 +46,10 @@ fun FeatureCard(
             verticalAlignment = Alignment.CenterVertically
         ) {
             Column {
-                Text(title, style = MaterialTheme.typography.titleMedium)
+                Text(stringResource(title), style = MaterialTheme.typography.titleMedium)
                 Spacer(Modifier.height(6.dp))
                 Text(
-                    description,
+                    stringResource(description),
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
@@ -55,7 +58,7 @@ fun FeatureCard(
             Icon(
                 imageVector = icon,
                 contentDescription = null,
-                tint = MaterialTheme.colorScheme.primary,
+                tint = iconColor,
                 modifier = Modifier.size(36.dp)
             )
         }

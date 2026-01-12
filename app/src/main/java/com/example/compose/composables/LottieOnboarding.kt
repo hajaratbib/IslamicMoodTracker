@@ -21,8 +21,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.example.compose.R
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.HorizontalPagerIndicator
 import com.google.accompanist.pager.rememberPagerState
@@ -65,7 +67,7 @@ fun LottieOnboarding(
 
 
                 Text(
-                    text = item.title,
+                    text = stringResource(item.title),
                     style = MaterialTheme.typography.headlineLarge,
                     textAlign = TextAlign.Center
                 )
@@ -73,7 +75,7 @@ fun LottieOnboarding(
                 Spacer(Modifier.height(8.dp))
 
                 Text(
-                    text = item.description,
+                    text = stringResource(item.description),
                     style = MaterialTheme.typography.bodyLarge,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                     textAlign = TextAlign.Center,
@@ -93,11 +95,13 @@ fun LottieOnboarding(
 
         // Navigation buttons
         Row(
-            modifier = Modifier.fillMaxWidth().padding(bottom = 20.dp),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(bottom = 20.dp),
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             TextButton(onClick = onFinish) {
-                Text("Skip")
+                Text(stringResource(R.string.skip))
             }
 
             Button(
@@ -114,8 +118,8 @@ fun LottieOnboarding(
             ) {
                 Text(
                     if (pagerState.currentPage == onboardingPages.lastIndex)
-                        "Finish"
-                    else "Next"
+                        stringResource(R.string.finish)
+                    else stringResource(R.string.next)
                 )
             }
         }

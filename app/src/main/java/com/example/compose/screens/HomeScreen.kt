@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -17,7 +16,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.example.compose.R
 import com.example.compose.composables.DhikrCard
 import com.example.compose.composables.MoodRow
 
@@ -25,100 +26,118 @@ import com.example.compose.composables.MoodRow
 fun HomeScreen(
     context: Context,
     username: String,
-    onMoodSelected: (String) -> Unit = {}
+    onMoodSelected: (Int) -> Unit = {}
 ) {
     val dhikrByEmotion = mapOf(
         // Original 20 emotions
-        "Happy" to listOf("الحمد لله", "سبحان الله وبحمده", "لا إله إلا الله"),
-        "Calm" to listOf("سبحان الله وبحمده", "سبحان الله العظيم", "اللهم اجعلني من الهادئين"),
-        "Sad" to listOf(
+        R.string.happy to listOf("الحمد لله", "سبحان الله وبحمده", "لا إله إلا الله"),
+        R.string.calm to listOf(
+            "سبحان الله وبحمده",
+            "سبحان الله العظيم",
+            "اللهم اجعلني من الهادئين"
+        ),
+        R.string.sad to listOf(
             "اللهم إني أعوذ بك من الهم والحزن",
             "رب إني مسني الضر وأنت أرحم الراحمين",
             "أستغفر الله العظيم"
         ),
-        "Anxious" to listOf(
+        R.string.anxious to listOf(
             "أستغفر الله العظيم الذي لا إله إلا هو الحي القيوم وأتوب إليه",
             "اللهم لا سهل إلا ما جعلته سهلا وأنت تجعل الحزن إذا شئت سهلا",
             "أعوذ بكلمات الله التامات من شر ما خلق"
         ),
-        "Angry" to listOf(
+        R.string.angry to listOf(
             "اللهم إني أعوذ بك من غضبك",
             "اللهم اجعل قلبي هادئا",
             "سبحان الله وبحمده"
         ),
-        "Tired" to listOf("اللهم ربّ إني أعوذ بك من الكسل", "اللهم أعني على نشاطي", "سبحان الله"),
-        "Stressed" to listOf(
+        R.string.tired to listOf(
+            "اللهم ربّ إني أعوذ بك من الكسل",
+            "اللهم أعني على نشاطي",
+            "سبحان الله"
+        ),
+        R.string.stressed to listOf(
             "اللهم لا سهل إلا ما جعلته سهلا",
             "اللهم اجعل لي فرجا ومخرجا",
             "أستغفر الله"
         ),
-        "Lonely" to listOf(
+        R.string.lonely to listOf(
             "اللهم اجعل لي من أمري فرجًا ومخرجًا",
             "اللهم اجمعني مع الصالحين",
             "رب اجعل لي نصيرا"
         ),
-        "Guilty" to listOf(
+        R.string.guilty to listOf(
             "رب اغفر لي وتب عليّ إنك أنت التواب الرحيم",
             "أستغفر الله وأتوب إليه",
             "اللهم تقبل توبتي"
         ),
-        "Confused" to listOf(
+        R.string.confused to listOf(
             "اللهم أرشدني لأحسن أمري وقرّبني إلى الحق",
             "اللهم اجعل لي نورا في قلبي",
             "سبحان الله"
         ),
-        "Hopeful" to listOf(
+        R.string.hopeful to listOf(
             "حسبنا الله ونعم الوكيل",
             "اللهم اجعل أموري سهلة",
             "اللهم اجعل لي خيرًا فيما أريد"
         ),
-        "Fearful" to listOf(
+        R.string.fearful to listOf(
             "أعوذ بكلمات الله التامات من شر ما خلق",
             "اللهم لا تجعل قلبي يخاف إلا منك",
             "سبحان الله وبحمده"
         ),
-        "Grateful" to listOf("الحمد لله على كل حال", "اللهم اجعلني من الشاكرين", "سبحان الله"),
-        "Excited" to listOf("اللهم اجعلني من الشاكرين", "الحمد لله دائما", "سبحان الله"),
-        "Jealous" to listOf(
+        R.string.grateful to listOf(
+            "الحمد لله على كل حال",
+            "اللهم اجعلني من الشاكرين",
+            "سبحان الله"
+        ),
+        R.string.excited to listOf("اللهم اجعلني من الشاكرين", "الحمد لله دائما", "سبحان الله"),
+        R.string.jealous to listOf(
             "اللهم أعوذ بك من عين الحاسدين",
             "اللهم اجعل قلبي خاليا من الحسد",
             "سبحان الله"
         ),
-        "Overwhelmed" to listOf(
+        R.string.overwhelmed to listOf(
             "اللهم إني أعوذ بك من الهم والحزن والعجز والكسل",
             "اللهم اجعل لي فرجا ومخرجا",
             "سبحان الله"
         ),
-        "Peaceful" to listOf(
+        R.string.peaceful to listOf(
             "سبحان الله والحمد لله ولا إله إلا الله والله أكبر",
             "اللهم اجعلني من الهادئين",
             "سبحان الله"
         ),
-        "Motivated" to listOf(
+        R.string.motivated to listOf(
             "اللهم اجعلني ثابتًا على طاعتك",
             "اللهم أعني على عملي الصالح",
             "سبحان الله"
         ),
-        "Regretful" to listOf(
+        R.string.regretful to listOf(
             "رب اغفر لي ذنبي واهدني سبيلي",
             "أستغفر الله العظيم",
             "اللهم تقبل توبتي"
         ),
 
-        // 10 additional emotions
-        "Frustrated" to listOf("اللهم اجعل لي من أمري فرجًا", "سبحان الله وبحمده", "أستغفر الله"),
-        "Lonely/isolated" to listOf("اللهم اجمعني مع الصالحين", "رب اجعل لي نصيرا", "سبحان الله"),
-        "Overjoyed" to listOf("الحمد لله", "سبحان الله وبحمده", "لا إله إلا الله"),
-        "Insecure" to listOf("اللهم اجعل قلبي مطمئنا", "أستغفر الله", "حسبنا الله ونعم الوكيل"),
-        "Nostalgic" to listOf("اللهم اجعل ذكرياتي طيبة", "سبحان الله", "الحمد لله"),
-        "Confident" to listOf("اللهم اجعلني قويًا على طاعتك", "سبحان الله", "الحمد لله"),
-        "Embarrassed" to listOf("أستغفر الله", "اللهم اغفر لي ذنبي", "سبحان الله"),
-        "Relaxed" to listOf(
+        R.string.frustrated to listOf(
+            "اللهم اجعل لي من أمري فرجًا",
+            "سبحان الله وبحمده",
+            "أستغفر الله"
+        ),
+        R.string.overjoyed to listOf("الحمد لله", "سبحان الله وبحمده", "لا إله إلا الله"),
+        R.string.insecure to listOf(
+            "اللهم اجعل قلبي مطمئنا",
+            "أستغفر الله",
+            "حسبنا الله ونعم الوكيل"
+        ),
+        R.string.nostalgic to listOf("اللهم اجعل ذكرياتي طيبة", "سبحان الله", "الحمد لله"),
+        R.string.confident to listOf("اللهم اجعلني قويًا على طاعتك", "سبحان الله", "الحمد لله"),
+        R.string.embarrassed to listOf("أستغفر الله", "اللهم اغفر لي ذنبي", "سبحان الله"),
+        R.string.relaxed to listOf(
             "سبحان الله والحمد لله",
             "اللهم اجعلني من الهادئين",
             "سبحان الله وبحمده"
         ),
-        "Curious" to listOf("اللهم زدني علمًا نافعًا", "سبحان الله", "الحمد لله")
+        R.string.curious to listOf("اللهم زدني علمًا نافعًا", "سبحان الله", "الحمد لله")
     )
     var selectedMood by remember { mutableStateOf<String?>(null) }
 
@@ -131,7 +150,7 @@ fun HomeScreen(
 
         // Greeting
         Text(
-            text = "Hello, $username 👋",
+            text = stringResource(R.string.hello) + "$username 👋",
             style = MaterialTheme.typography.headlineSmall
         )
         Spacer(Modifier.height(6.dp))
@@ -139,7 +158,7 @@ fun HomeScreen(
         // Display Dhikr suggestions if mood is Sad or Anxious
         if (selectedMood == null) {
             Text(
-                text = "How are you feeling today?",
+                text = stringResource(R.string.mood_question),
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
@@ -148,27 +167,29 @@ fun HomeScreen(
 
             // Mood selector (horizontal chips)
             MoodRow { mood ->
-                selectedMood = mood
+                selectedMood = context.getString(mood)
                 onMoodSelected(mood)
             }
 
             Spacer(Modifier.height(24.dp))
         } else {
             selectedMood?.let { mood ->
-                if (dhikrByEmotion.containsKey(mood)) {
-                    Text(
-                        text = "Recommended Dhikr for $mood:",
-                        style = MaterialTheme.typography.titleMedium
-                    )
-                    Spacer(Modifier.height(8.dp))
-                    dhikrByEmotion[mood]?.forEach { dhikr ->
-                        DhikrCard(dhikr)
+                for (element in dhikrByEmotion) {
+                    if (stringResource(element.key) == mood) {
+                        Text(
+                            text = stringResource(R.string.recommended),
+                            style = MaterialTheme.typography.titleMedium
+                        )
                         Spacer(Modifier.height(8.dp))
+                        element.value.forEach { dhikr ->
+                            DhikrCard(dhikr)
+                            Spacer(Modifier.height(8.dp))
+                        }
+                        Button(onClick = { selectedMood = null }) {
+                            Text(stringResource(R.string.back_list))
+                        }
+                        Spacer(Modifier.height(24.dp))
                     }
-                    Button(onClick = { selectedMood = null }) {
-                        Text("Back to Mood List")
-                    }
-                    Spacer(Modifier.height(24.dp))
                 }
             }
         }

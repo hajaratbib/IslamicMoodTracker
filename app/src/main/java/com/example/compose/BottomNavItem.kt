@@ -9,11 +9,11 @@ import androidx.compose.ui.graphics.vector.ImageVector
 
 sealed class BottomNavItem(
     val route: String,
-    val label: String,
+    val label: Int,
     val icon: ImageVector
 ) {
-    object Home : BottomNavItem("home", "Home", Icons.Default.Home)
-    object Tips : BottomNavItem("tips", "Tips", Icons.Default.Lightbulb)
-    object Dhikr : BottomNavItem("dhikr", "Dhikr", Icons.Default.Spa)
-    object Profile : BottomNavItem("profile", "Profile", Icons.Default.Person)
+    object Home : BottomNavItem("home", R.string.home, Icons.Default.Home)
+    object Tips : BottomNavItem("tips", R.string.tips, Icons.Default.Lightbulb)
+    object Dhikr : BottomNavItem("dhikr", R.string.dhikr, Icons.Default.Spa)
+    object Profile : BottomNavItem("profile", R.string.profile, Icons.Default.Person)
 }

@@ -18,9 +18,7 @@ fun StartScreen(context: Context) {
 
         "" -> {
             // No name saved yet → show dialog
-            AskNameDialog(context) { savedName ->
-                // nothing else needed — DataStore will recompose
-            }
+            AskNameDialog(context)
         }
 
         else -> {
