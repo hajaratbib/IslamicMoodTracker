@@ -60,10 +60,10 @@
     <string name="breathing_desc">Relax with guided breathing</string>
     <string name="wellbeing_title">Daily Wellbeing habits</string>
     <string name="wellbeing_desc">Practices for a better life style</string>
-    <string name="gratitude_title">Daily Wellbeing habits</string>
-    <string name="gratitude_desc">Practices for a better life style</string>
-    <string name="journaling_title">Daily Wellbeing habits</string>
-    <string name="journaling_desc">Practices for a better life style</string>
+    <string name="gratitude_title">Gratitude Practice</string>
+    <string name="gratitude_desc">Shift focus on the blessings</string>
+    <string name="journaling_title">Journaling</string>
+    <string name="journaling_desc">Process emotions by writing thoughts</string>
 
 
 
