@@ -14,12 +14,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.example.compose.R
 import com.example.compose.composables.FeatureCard
+import com.example.compose.navigation.BreathingScreen
 
 @Composable
 fun TipsScreen(
-    onNavigateToBreathing: () -> Unit = {},
+    navController: NavController,
     onNavigateToDailyTips: () -> Unit = {},
     onNavigateToGratitudePractice: () -> Unit = {},
     onNavigateToJournaling: () -> Unit = {}
@@ -35,7 +37,9 @@ fun TipsScreen(
             description = R.string.breathing_desc,
             icon = Icons.Default.Favorite,
             colorResource(R.color.light_red),
-            onClick = onNavigateToBreathing
+            onClick = {
+                navController.navigate(BreathingScreen.BreathingList.route)
+            }
         )
 
         Spacer(Modifier.height(16.dp))

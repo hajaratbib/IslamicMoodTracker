@@ -5,6 +5,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import com.example.compose.UserPreferences
 import com.example.compose.composables.LottieOnboarding
+import com.example.compose.navigation.NavigationScreen
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
